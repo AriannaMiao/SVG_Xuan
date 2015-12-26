@@ -96,6 +96,8 @@ public:
         if (iter == id2elm.end()) {
             throw "element not found";
         }
+        SVGElement* iter1 = *iter->second; 
+        delete iter1->clone();
         elements.erase(iter->second);
         id2elm.erase(iter);
 		//±¾±¦±¦Ð´µÄ 
@@ -109,6 +111,18 @@ public:
     virtual SVGContainerElement* clone_as_container() const = 0;
 
     virtual ~SVGContainerElement() {
+    	ElementList::const_iterator ei = elements.begin();
+        ElementList::const_iterator ee = elements.end();
+        CElementList::const_iterator ci = celements.begin();
+        CElementList::const_iterator ce = celements.end();
+        for (; ei != ee; ++ei) {
+ 			if (ci == ce || *ei != *ci) {
+            	SVGElement* e0 = *ei;
+                delete e0->clone();
+            } else { 
+                ++ci;
+            }
+        }
         elements.erase(elements.begin(), elements.end());
         id2elm.erase(id2elm.begin(), id2elm.end());
         celements.erase(celements.begin(), celements.end());
