@@ -96,8 +96,7 @@ public:
         if (iter == id2elm.end()) {
             throw "element not found";
         }
-        SVGElement* iter1 = *iter->second; 
-        delete iter1->clone();
+        delete *(iter->second);
         elements.erase(iter->second);
         id2elm.erase(iter);
 		//本宝宝写的 
@@ -117,16 +116,11 @@ public:
         CElementList::const_iterator ce = celements.end();
         for (; ei != ee; ++ei) {
  			if (ci == ce || *ei != *ci) {
-            	SVGElement* e0 = *ei;
-                delete e0->clone();
+            	delete *ei;
             } else { 
                 ++ci;
             }
         }
-        elements.erase(elements.begin(), elements.end());
-        id2elm.erase(id2elm.begin(), id2elm.end());
-        celements.erase(celements.begin(), celements.end());
-        cid2elm.erase(cid2elm.begin(), cid2elm.end());
     }//本宝宝写的 
 };
 

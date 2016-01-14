@@ -1,0 +1,22 @@
+<svg version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg" width="325" height="325">
+<path d="M 80 80
+A 45 45 0 0 0 125 125
+L 125 80
+z
+" fill="green" />
+<path d="M 230 80
+A 45 45 0 1 0 275 125
+L 275 80
+z
+" fill="red" />
+<path d="M 80 230
+A 45 45 0 0 1 125 275
+L 125 230
+z
+" fill="purple" />
+<path d="M 230 230
+A 45 45 0 1 1 275 275
+L 275 230
+z
+" fill="blue" />
+</svg>
